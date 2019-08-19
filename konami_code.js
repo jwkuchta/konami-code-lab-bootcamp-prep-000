@@ -12,18 +12,21 @@ const codes = [
 ];
 
 function init() {
-  let idx = 0
+  // your code here	  //
+  var index = 0
+  document.body.addEventListener('keydown', onKeyDownHandler);
 
-  document.body.addEventListener("keydown", (e) => {
-    const key = e.key
+   function onKeyDownHandler(e) {
+    const key = parseInt(e.detail || e.which)
+    console.log('key', key)
+    if (key === code[index]) {
+      index++
 
-    idx = (codes[idx] === key) ? ++idx : 0
-
-
-    if (idx === codes.length) {
-      window.alert("Hurray!");
-      idx = 0
+       if (index === code.length) {
+        alert("YOU DID IT!")
+        index = 0
+      }
+    } else {
+      index = 0
     }
-
-  });
-}
+  }
