@@ -12,24 +12,21 @@ const codes = [
 ];
 
 function init() {
-  if (window.addEventListener) {
-      // create the keys and konami variables
-      var keys = [],
-          konami = "38,38,40,40,37,39,37,39,66,65";
 
-      // bind the keydown event to the Konami function
-      window.addEventListener("keydown", function(e){
-          // push the keycode to the 'keys' array
-          keys.push(e.keyCode);
+let index = 0;
 
-          // and check to see if the user has entered the Konami code
-          if (keys.toString().indexOf(konami) >= 0) {
-              // do something such as:
-              alert("you did it!")
+   document.body.addEventListener("keydown", function (e) {
+    const key = e.key;
 
-              // and finally clean up the keys array
-              keys = [];
-          };
-      }, true);
-  }
-}
+     if(key === codes[index]){
+      index++;
+
+       if (index === codes.length){
+        alert("Code Passed!");
+        index = 0;
+      }
+    } else{
+      index = 0;
+    }
+  })
+}	}
